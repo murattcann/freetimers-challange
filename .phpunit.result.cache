@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\CalculationTest::testAddToCart":4,"Tests\\BasketTest::testAddToBasket":4},"times":{"Tests\\CalculationTest::testCalculateNumberOfBags":0.002,"Tests\\CalculationTest::testAddToCart":0.001,"Tests\\BasketTest::testAddToBasket":0.076}}

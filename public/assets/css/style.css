@@ -1,0 +1,16 @@
+ 
+.loader{
+    width: 100px;
+    text-align: center;
+}
+
+ 
+.accordion-button:not(.collapsed){
+    background-color: #6d757d!important;
+    color: white;
+    font-weight: bolder;
+}
+
+.form-control:focus {
+    box-shadow: none!important;
+}
