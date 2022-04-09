@@ -9,12 +9,10 @@
 </ul>
 <hr>
 
-
+ <p>You can set up project with: </p>
 <div id="manualInstallation">
-    
-    <p>You can set up project with: </p>
     <ol>
-        <li><code>git clone https://github.com/murattcann/freetimers.git</code></li>
+        <li><code>git clone https://github.com/murattcann/freetimers-challange.git</code></li>
         <li><code>composer install</code></li>
         <li><code>mysql -u username -p database_name < ./freetimers.sql</code></li>
     </ol>
