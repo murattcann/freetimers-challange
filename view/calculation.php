@@ -93,7 +93,7 @@
                                         <div class="row mt-3">
                                             <div class="col-md-12">
                                                 <button type="button" id="calculateBtn" class="btn btn-outline-info">Calculate</button>
-                                                <button type="button" id="addToCart" data-bag-count="0" class="btn btn-success">Add To Cart</button>
+                                                <button type="button" id="addToCart" data-bag-count="0" class="btn btn-success">Add To Basket</button>
                                             </div>
                                         </div>
                                     </form>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\Basket;
 use App\Helpers\Calculator;
 use App\Helpers\Database;
 
@@ -32,20 +33,10 @@ if(isset($_POST["action"]) && $_POST["action"] === "getCartItems"){ // gets all 
 
     echo json_encode(["calculatedResult" => $bagCount]);
  }else if(isset($_POST["action"]) && $_POST["action"] === "addToCart"){ // records to cart_items table given datas
-    
-    $database = new Database();
     $request = $_POST;
     unset($request["action"]);
     $request["unit_price"] = 72;
-     
-    $valueKeys = "";
-     //convert array to pdo string => :column1, :column2
-    foreach($request as $key => $req){
-        $valueKeys .= ':'.$key.',';
-    }
-    $valueKeys = rtrim($valueKeys, ",");
-     
-    $store = $database->store("INSERT INTO cart_items(measurement_unit,depth_measurement_unit, width, length, depth, bag_count, unit_price) VALUES(".$valueKeys.")", $request);
+    $store = Basket::addToBasket($request);
     $statusCode = $store ?  201: 400;
     
     echo json_encode(["status" => $statusCode]);

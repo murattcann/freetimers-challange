@@ -1,9 +1,8 @@
 <?php 
 namespace Tests;
 
-use App\Enums\Units; 
-use App\Helpers\Database;
-
+use App\Enums\Units;
+use App\Helpers\Basket;
 class BasketTest extends \PHPUnit\Framework\TestCase
 {
     public function testAddToBasket(){ //testing 'Add To Basket' action
@@ -16,14 +15,7 @@ class BasketTest extends \PHPUnit\Framework\TestCase
             "bag_count" => 4,
             "unit_price" => 72,
         ];
-
-        $database = new Database();
-        $valueKeys = '';
-        foreach($dataSet as $key => $data){
-            $valueKeys .= ':'.$key.',';
-        }
-        $valueKeys = rtrim($valueKeys, ",");
-        $store = $database->store("INSERT INTO cart_items(measurement_unit,depth_measurement_unit, width, length, depth, bag_count, unit_price) VALUES(".$valueKeys.")", $dataSet);
+        $store = Basket::addToBasket($dataSet);
         $this->assertEquals(true, $store);
     }
 }

@@ -9,13 +9,6 @@ use App\Enums\Units;
 
 class Calculator
 {
-
-    /* public function __construct()
-    {
-        echo "calc";
-        die;
-    } */
-    
     private $measurementUnit; 
     private $depthMeasurementUnit;
     private $dimensions; 
