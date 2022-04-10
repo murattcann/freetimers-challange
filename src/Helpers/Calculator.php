@@ -41,16 +41,16 @@ class Calculator
      */
     public function setDimensions(int $width, int $length, float $depth = 1.4){
         $this->dimensions = [
-            "width" => $width,//$this->convertToMeter($width, $this->measurementUnit),
-            "length" => $length,//$this->convertToMeter($length, $this->depthMeasurementUnit),
-            "depth" => $depth,
+            "width" => $this->convertToMeter($width, $this->measurementUnit),
+            "length" => $this->convertToMeter($length, $this->measurementUnit),
+            "depth" => $depth// $this->convertToMeter($depth, $this->depthMeasurementUnit),
         ];
+       
         return $this;
     }
 
     /**
      * This method calculates the numbers of bag with the values which given before
-     * @return int
      */
     public function calculate(){
         $firstStep = $this->dimensions['width'] * $this->dimensions['length'] * 0.025;
@@ -75,6 +75,7 @@ class Calculator
             "depth" => $this->dimensions["depth"],
             "bag_count" => $this->result, 
         ];
+         
 
         $valueKeys = "";
         //convert array to pdo string => :column1, :column2
@@ -82,16 +83,17 @@ class Calculator
             $valueKeys .= ':'.$key.',';
         }
         $valueKeys = rtrim($valueKeys, ",");
-        $database->store("INSERT INTO calculated_results(measurement_unit,depth_measurement_unit, width, length, depth, bag_count) VALUES(".$valueKeys.")", $dataSet);
+        return $database->store("INSERT INTO calculated_results(measurement_unit,depth_measurement_unit, width, length, depth, bag_count) VALUES(".$valueKeys.")", $dataSet);
     }
     /** This method converts measurements excluding meters
      * @param int $value
      * @param string $unit
      * @return float
      */
-    public static function convertToMeter(int $value, string $unit){
+    public function convertToMeter(int $value, string $unit){
         return $value * Units::UNIT_MULTIPLES[$unit];
     }
+
 }
 
 ?>

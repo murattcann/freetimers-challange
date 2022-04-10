@@ -45,7 +45,7 @@
                                                         <span class="input-group-text" id="measurementUnitSpan">Mesurement Unit</span>
                                                     </div>
                                                     <select class="form-control form-select" name="measurement_unit" id="measurementUnit">
-                                                        <option value="meters">Metres</option>
+                                                        <option value="meters">Meters</option>
                                                         <option value="feets">Feets</option>
                                                         <option value="yards">Yards</option>
                                                     </select>
