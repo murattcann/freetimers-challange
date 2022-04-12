@@ -64,20 +64,20 @@
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" name="width" id="width" placeholder="Width" min="0" required>
+                                                    <input type="number" class="form-control numberInput" name="width" id="width" placeholder="Width" min="0" required>
                                                     <label for="width">Width</label>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" name="length" id="length" placeholder="Length" min="0" required>
+                                                    <input type="number" class="form-control numberInput" name="length" id="length" placeholder="Length" min="0" required>
                                                     <label for="length">Length</label>
                                                 </div>
 
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control"  name="depth" id="depth" placeholder="Depth" required>
+                                                    <input type="number" class="form-control numberInput"  name="depth" id="depth" placeholder="Depth" required>
                                                     <label for="depth">Depth</label>
                                                 </div>
                                             </div>

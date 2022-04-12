@@ -5,16 +5,17 @@
  */
 namespace App\Helpers;
 
-use App\Enums\Units;
+use App\Helpers\Interfaces\IBasket;
 
-class Basket
-{    
+class Basket implements IBasket
+{
     /**
     * This method records basket item to db
     * @param array $dataSet
     * @return bool
     */
-    public static function addToBasket(array $dataSet){
+    public static function addToBasket(array $dataSet)
+    {
         $database = $database = new Database();
         $valueKeys = "";
         //convert array to pdo string => :column1, :column2
@@ -26,5 +27,3 @@ class Basket
        return $store;
     }
 }
-
-?>

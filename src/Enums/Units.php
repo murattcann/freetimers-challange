@@ -24,5 +24,3 @@ class Units
         self::CANTIMETERS => 0.01
     ];
 }
-
-?>

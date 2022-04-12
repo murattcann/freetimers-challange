@@ -7,7 +7,9 @@ use SebastianBergmann\CodeCoverage\Report\Xml\Unit;
 
 class CalculationTest extends \PHPUnit\Framework\TestCase
 {
-    public function testCalculateNumberOfBags(){ //testing calculation the number of bags
+    //testing calculation the number of bags
+    public function testCalculateNumberOfBags()
+    {   
         
         $calculator = new Calculator();
         $calculator->setMeasurementUnit(Units::METERS)
@@ -17,7 +19,10 @@ class CalculationTest extends \PHPUnit\Framework\TestCase
         $result = $calculator->getResult();
         $this->assertEquals(4, $result);
     }
-    public function testSaveObjects(){ //testing saveObjects method of calculator class
+    //testing saveObjects method of calculator class
+    public function testSaveObjects()
+    {   
+        
         $calculator = new Calculator();
         $calculator->setMeasurementUnit(Units::METERS)
                 ->setDepthMeasurementUnit(Units::CANTIMETERS)
@@ -26,27 +31,35 @@ class CalculationTest extends \PHPUnit\Framework\TestCase
         $store = $calculator->saveObjects();
         $this->assertEquals(true, $store);
     }
-
-    public function testConvertFeetToMeter(){ // testing convertToMeter method for feet
+    // testing convertToMeter method for feet
+    public function testConvertFeetToMeter()
+    {   
+        
         $calculator = new Calculator();
         $converted = $calculator->convertToMeter(10, Units::FEETS);
         $this->assertEquals(3.048, $converted);
     }
-    public function testConvertYardsToMeter(){ // testing convertToMeter method for yard
+    // testing convertToMeter method for yard
+    public function testConvertYardsToMeter()
+    {      
         $calculator = new Calculator();
         $converted = $calculator->convertToMeter(10, Units::YARDS);
         $this->assertEquals(9.144, $converted);
     }
-    public function testConvertInchToMeter(){ // testing convertToMeter method for inch
+
+    // testing convertToMeter method for inch
+    public function testConvertInchToMeter()
+    {       
         $calculator = new Calculator();
         $converted = $calculator->convertToMeter(10, Units::INCHES);
         $this->assertEquals(0.254, $converted);
     }
-    public function testConvertCantimeterToMeter(){ // testing convertToMeter method for cantimeter
+    
+    // testing convertToMeter method for cantimeter
+    public function testConvertCantimeterToMeter()
+    {   
         $calculator = new Calculator();
         $converted = $calculator->convertToMeter(10, Units::CANTIMETERS);
         $this->assertEquals(0.1, $converted);
     }
 }
-
-?>

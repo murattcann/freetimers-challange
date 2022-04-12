@@ -5,7 +5,9 @@ use App\Enums\Units;
 use App\Helpers\Basket;
 class BasketTest extends \PHPUnit\Framework\TestCase
 {
-    public function testAddToBasket(){ //testing 'Add To Basket' action
+    //testing 'Add To Basket' action
+    public function testAddToBasket()
+    { 
         $dataSet = [
             "measurement_unit" => Units::METERS,
             "depth_measurement_unit" => Units::CANTIMETERS,
@@ -19,5 +21,3 @@ class BasketTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(true, $store);
     }
 }
-
-?>

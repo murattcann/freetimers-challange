@@ -45,4 +45,4 @@ if(isset($_POST["action"]) && $_POST["action"] === "getCartItems"){ // gets all 
 }else{
     require "./view/calculation.php";
 }
-?>
+ 

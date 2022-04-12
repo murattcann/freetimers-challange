@@ -26,14 +26,17 @@ class Database
         }
     }
 
-    public function getConnection(){ // returns connection data
+    // returns connection data
+    public function getConnection()
+    { 
         return $this->connection;
     }
      /**
      * This method gets single row from database 
      * @param string $query
      */
-    public function get(string $query){
+    public function get(string $query)
+    {
         return $this->connection->query($query , PDO::FETCH_ASSOC)->fetch(PDO::FETCH_ASSOC);
     }
     /**
@@ -41,7 +44,8 @@ class Database
      * @param string $query
      * @return array
      */
-    public function getAll(string $query){
+    public function getAll(string $query)
+    {
         return $this->connection->query($query , PDO::FETCH_ASSOC)->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -51,13 +55,11 @@ class Database
      * @param array $values
      * @return bool
      */
-    public function store(string $query, array $values){
-         
+    public function store(string $query, array $values)
+    {
         $execute = $this->connection->prepare($query);
         return  $execute->execute($values);
     }
 
     
 }
-
-?>

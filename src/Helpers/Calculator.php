@@ -6,19 +6,21 @@
 namespace App\Helpers;
 
 use App\Enums\Units;
+use App\Helpers\Interfaces\ICalculator;
 
-class Calculator
+class Calculator implements ICalculator
 {
-    private $measurementUnit; 
-    private $depthMeasurementUnit;
-    private $dimensions; 
+    private $measurementUnit = null; 
+    private $depthMeasurementUnit = null;
+    private $dimensions = null; 
     private $result = 0;
     /**
      * This method sets measurement unit for calculation by given string
      * @param string $measurementUnit
      * @return self
      */
-    public function setMeasurementUnit(string $measurementUnit){
+    public function setMeasurementUnit(string $measurementUnit)
+    {
         $this->measurementUnit = $measurementUnit;
         return $this;
     }
@@ -27,7 +29,8 @@ class Calculator
      * @param string $depthMeasurementUnit
      * @return self
      */
-    public function setDepthMeasurementUnit(string $depthMeasurementUnit){
+    public function setDepthMeasurementUnit(string $depthMeasurementUnit)
+    {
         $this->depthMeasurementUnit = $depthMeasurementUnit;
         return $this;
     }
@@ -39,7 +42,8 @@ class Calculator
      * @param int $depth
      * @return self
      */
-    public function setDimensions(int $width, int $length, float $depth = 1.4){
+    public function setDimensions(int $width, int $length, float $depth = 1.4)
+    {
         $this->dimensions = [
             "width" => $this->convertToMeter($width, $this->measurementUnit),
             "length" => $this->convertToMeter($length, $this->measurementUnit),
@@ -52,7 +56,8 @@ class Calculator
     /**
      * This method calculates the numbers of bag with the values which given before
      */
-    public function calculate(){
+    public function calculate()
+    {
         $firstStep = $this->dimensions['width'] * $this->dimensions['length'] * 0.025;
         $this->result = ceil($this->dimensions['depth'] * $firstStep);
     }
@@ -60,12 +65,14 @@ class Calculator
      * This method returns calculated bag count
      * @return int
      */
-    public function getResult(){
+    public function getResult()
+    {
         return $this->result;
     }
 
      /** This method records the calculating credentials to db*/
-    public function saveObjects(){
+    public function saveObjects()
+    {
         $database = new Database();
         $dataSet = [
             "measurement_unit" => $this->measurementUnit,
@@ -90,10 +97,9 @@ class Calculator
      * @param string $unit
      * @return float
      */
-    public function convertToMeter(int $value, string $unit){
+    public function convertToMeter(int $value, string $unit)
+    {
         return $value * Units::UNIT_MULTIPLES[$unit];
     }
 
 }
-
-?>

@@ -2,7 +2,32 @@
 let spinner = '<img src="./public/assets/images/loader.gif" class="loader">';
 let warningAlert = '<div class="alert alert-warning">No recorded data yet.</div>';
 
+// This global method forces related input to numeric characters
+jQuery.fn.numericInput =
+function()
+{
+    return this.each(function()
+    {
+        $(this).keydown(function(e)
+        {
+            var key = e.charCode || e.keyCode || 0;
+            return (
+                key == 8 || 
+                key == 9 ||
+                key == 13 ||
+                key == 46 ||
+                key == 110 ||
+                key == 190 ||
+                (key >= 35 && key <= 40) ||
+                (key >= 48 && key <= 57) ||
+                (key >= 96 && key <= 105));
+        });
+    });
+};
+
 $(function(){
+
+    $(".numberInput").numericInput();
     setTimeout(() => {
          loadCartItems();
     }, 750);
@@ -125,15 +150,4 @@ $(document).on("click", "#addToCart", function(e){
         }
     });
      
-})
-$(document).on("keyup input",  ".numberInput", function(){
-    
-    let _this = $(this);
-    let value = $(this).val().trim();
-    
-    // check string  correction for numeric value if variable type selected as numeric
-    if(/\D/g.test(value))
-    {
-        _this.val(value.replace(/\D/g,''));
-    }
 })
